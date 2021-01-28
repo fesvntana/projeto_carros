@@ -38,12 +38,14 @@ routes.put('/cars/:id', async (request, response) => {
 
 routes.get('/cars', async(request, response) => {
     const cars = await Car.find();
+    // const cars = await Car.find().select({ "_id":0, "__v":0 });
     return response.json(cars);
 });
 
 routes.get('/cars/:id', async (request, response) => {
     const {id} = request.params;
     const cars = await Car.findById({_id: id});
+    // const cars = await Car.findById({_id: id}).select({ "_id":0, "__v":0 });
     return response.json(cars);
 });
 
