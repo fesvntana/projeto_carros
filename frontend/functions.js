@@ -1,14 +1,17 @@
 var carros, index
-
+let selecteds = []
+let arrayIndex = []
+let arrayIds = []
 const table = document.querySelector("table");
 const tbody = document.querySelector("tbody");
 const formCadastro = document.getElementById('cadastraForm');
 const formDelete = document.getElementById('deleteForm');
+const formDeleteMany = document.getElementById('deleteManyForm');
 const formEdit = document.getElementById('editForm');
 
 
 const actions = "<a href='#editCarroModal' class='edit' data-toggle='modal' onclick='fillEditModal(this)'><i class='material-icons' data-toggle='tooltip' title='Edit'>&#xE254;</i></a><a href='#deleteCarroModal' class='delete' data-toggle='modal' onclick='getIndex(this)'><i class='material-icons' data-toggle='tooltip' title='Delete'>&#xE872;</i></a>"
-const mark = "<span class='custom-checkbox'><input type='checkbox' id='checkbox1' name='options[]' value='1'><label for='checkbox1'></label></span>"
+const mark = "<span class='custom-checkbox'><input type='checkbox' name='options[]' value='1'><label for='checkbox1'></label></span>"
 
 
 function jsRun(){
@@ -127,22 +130,24 @@ function deleteCarro(id){
 	});
 }
 
-//Função que deleta os carros selecionados 
-// function deleteCarros(dataIds){
-// 	fetch("http://localhost:3333/cars/", {
-// 		"method": "DELETE",
-// 		"headers": {
-// 		"Content-Type": "application/json"
-// 	},
-// 	"body": "{\"id\":\"6010d3d95dd49a21783c31b4\",\"id2\":\"6010d918403e9b1698fed063\"}"
-// 	})
-// 	.then(response => {
-// 		console.log(response);
-// 	})
-// 	.catch(err => {
-// 		console.error(err);
-// 	});
-// }
+
+
+// Função que deleta os carros selecionados 
+function deleteCarros(dataIds){
+	fetch("http://localhost:3333/cars/", {
+		"method": "DELETE",
+		"headers": {
+		"Content-Type": "application/json"
+	},
+	"body": JSON.stringify(dataIds)
+	})
+	.then(response => {
+		console.log(response);
+	})
+	.catch(err => {
+		console.error(err);
+	});
+}
 
 
 
@@ -180,14 +185,20 @@ function editCarro(id,dataCar) {
 //Função que retorna o índice do item
 
 function getIndex(element){
-	index = element.parentElement.parentElement.rowIndex - 1
+	index = element.parentElement.parentElement.rowIndex - 1;
+	return index;
+}
+
+//Função que retorna o indice (para deletar muitos)
+function getIndexes(element){
+	index = element.parentElement.parentElement.parentElement.rowIndex - 1;
+	return index;
 }
 
 
 window.onload = function() {
 	jsRun();
 	getCars();
-
 	//EventListener do formulário de cadastro
 
 	formCadastro.addEventListener('submit', function(event) {
@@ -233,4 +244,32 @@ window.onload = function() {
 		// event.preventDefault();
 	});
 
+	// formDeleteMany.addEventListener('submit', function(event) {
+	// 	for (let item of checkboxes){
+	// 		if (item.checked){
+	// 		   selecteds.push(item);
+	// 	   } 
+	// 	}
+		
+	// 	for (let i of selecteds){
+	// 		arrayIndex.push(getIndexes(i))
+	// 	}
+		
+	// 	for (let i of arrayIndex){
+	// 		idCarro = carros[i]._id;
+	// 		arrayIds.push(idCarro);
+	// 	}
+	// 	oArrays = Object.assign({}, arrayIds)
+	// 	deleteCarros(oArrays);
+	// 	event.preventDefault();
+	// });
+
+	// formEdit.formDeleteMany.onload = function(){
+	// 	let checkboxes = document.querySelectorAll("input[type=checkbox]")
+	// }
+
 }
+
+
+
+ 

@@ -53,7 +53,7 @@ $(document).ready(function(){
 					</div>
 					<div class="col-sm-6">
 						<a href="#addCarroModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Adicionar Carro</span></a>
-						<a href="#deleteCarroModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						
+						<!-- <a href="#deleteCarrosModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						 -->
 					</div>
 				</div>
 			</div>
@@ -171,6 +171,26 @@ $(document).ready(function(){
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<form id="deleteForm">
+				<div class="modal-header">						
+					<h4 class="modal-title">Deletar Carro</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				</div>
+				<div class="modal-body">					
+					<p>Certeza que deseja deletar esses carros?</p>
+					<p class="text-warning"><small>Essa ação não poderá ser desfeita</small></p>
+				</div>
+				<div class="modal-footer">
+					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+					<input type="submit" class="btn btn-danger" value="Deletar">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<div id="deleteCarrosModal" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form id="deleteManyForm">
 				<div class="modal-header">						
 					<h4 class="modal-title">Deletar Carro</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
