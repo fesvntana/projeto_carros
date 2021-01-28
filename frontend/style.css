@@ -18,7 +18,7 @@ body {
 .table-responsive {
     padding: 0;
     box-shadow: 1px 3px 17px 6px rgba(0,0,0,0.11);
-    overflow-y: scroll;
+    overflow-y: auto;
     max-height: 80vh;
 }
 .table-wrapper {
