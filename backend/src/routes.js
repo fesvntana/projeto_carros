@@ -27,6 +27,23 @@ routes.delete('/cars/:id',async (request, response) => {
 
 });
 
+
+//Rota para deletar vários carros
+routes.delete('/cars',async (request, response) => {
+    // const {id} = request.params;
+    let ids = request.body;
+    ids = Object.values(ids);
+    await Car.deleteMany({
+        _id: { $in: ids}
+    })
+
+    return response.status(200).json(ids);
+
+});
+
+
+
+
 routes.put('/cars/:id', async (request, response) => {
     const {id} = request.params;
     const carRequest = request.body;

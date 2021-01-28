@@ -127,6 +127,25 @@ function deleteCarro(id){
 	});
 }
 
+//Função que deleta os carros selecionados 
+// function deleteCarros(dataIds){
+// 	fetch("http://localhost:3333/cars/", {
+// 		"method": "DELETE",
+// 		"headers": {
+// 		"Content-Type": "application/json"
+// 	},
+// 	"body": "{\"id\":\"6010d3d95dd49a21783c31b4\",\"id2\":\"6010d918403e9b1698fed063\"}"
+// 	})
+// 	.then(response => {
+// 		console.log(response);
+// 	})
+// 	.catch(err => {
+// 		console.error(err);
+// 	});
+// }
+
+
+
 function fillEditModal(element){
 
 	getIndex(element);
